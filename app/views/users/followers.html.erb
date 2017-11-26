@@ -22,6 +22,6 @@
         <%= link_to followers_user_path(@user) do %>Followers <span class="badge"><%= @count_followers %></span><% end %>
       </li>
     </ul>
-    <%= render 'microposts/microposts', microposts: @microposts %>
+    <%= render 'users', users: @followers %>
   </div>
 </div>
