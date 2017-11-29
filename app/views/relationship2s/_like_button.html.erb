@@ -1,0 +1,13 @@
+<% unless current_user == micropost.user %>
+  <% if current_user.liking?(micropost) %>
+    <%= form_for(current_user.relationship2s.find_by(like_id: micropost.id), html: { method: :delete }) do |f| %>
+      <%= hidden_field_tag :like_id, micropost.id %>
+      <%= f.submit 'Not Like', class: 'btn btn-danger btn-xs'  %>
+    <% end %>
+  <% else %>
+    <%= form_for(current_user.relationship2s.build) do |f| %>
+      <%= hidden_field_tag :like_id, micropost.id %>
+      <%= f.submit 'Like', class: 'btn btn-primary btn-xs' %>
+    <% end %>  
+  <% end %>
+<% end %>
